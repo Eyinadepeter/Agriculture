@@ -1,4 +1,6 @@
 import "./CtaBanner.css";
+import ctaBanner from "../../assets/ctabanner.png";
+
 
 export default function CtaBanner({
   eyebrow = "The Solution",
@@ -6,15 +8,15 @@ export default function CtaBanner({
   accent = "Further",
   body = "Protect what you grow, reduce waste, and connect with better opportunities through HarvestSafe.",
   cta = "Start Protecting",
-  image = "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=1400&q=80",
-}) {
+  image = ctaBanner,
+}){
   const [before, after] = title.split(accent);
 
   return (
     <section className="cta-section">
       <div className="cta-banner">
 
-        <img src={image} alt="" className="cta-bg" />
+    <img src={image} alt="CTA Banner" className="cta-bg" />
 
         <div className="cta-overlay"></div>
 
