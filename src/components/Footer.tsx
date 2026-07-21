@@ -6,7 +6,6 @@ import buyers from "../assets/buyers.jpg";
 import truck from "../assets/truck.jpg";
 import harvest from "../assets/harvest.jpg";
 import tomatoes from "../assets/tomatoes.jpg";
-import farming from "../assets/farming.jpg";
 
 const gallery = [
   farmer,
@@ -15,8 +14,6 @@ const gallery = [
   truck,
   harvest,
   tomatoes,
-  farming,
-  farmer, // Repeat one image to fill the grid
 ];
 
 export default function Footer() {
