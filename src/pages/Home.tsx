@@ -8,6 +8,7 @@ import Services from "../components/Services";
 import WhyChooseUs from "../components/WhyChooseUs";
 import HowItWorks from "../components/HowWork/HowWork";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function Home() {
 	return (
@@ -25,6 +26,7 @@ export default function Home() {
 				title="Built Around the People We Serve"
 			/>
 			<CtaBanner />
+			<Footer />
 		</>
 	);
 }
