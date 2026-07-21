@@ -5,7 +5,7 @@ import buyers from "../assets/buyers.jpg";
 import truck from "../assets/truck.jpg";
 import harvest from "../assets/harvest.jpg";
 import tomatoes from "../assets/tomatoes.jpg";
-import logo from "../assets/Logo.svg";
+import logo from "../assets/logo.svg";
 
 import {
   FaFacebookF,
