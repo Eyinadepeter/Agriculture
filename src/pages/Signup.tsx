@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { authService } from "../api/authService";
+import type { AxiosError } from "axios";
 import { FaFacebookF, FaApple } from "react-icons/fa";
 import { Icon } from "@iconify/react";
 import { Eye, EyeOff } from "lucide-react";
@@ -9,6 +11,7 @@ import Button from "../components/Button";
 import PasswordMismatchModal from "../components/PasswordMismatchModal";
 
 export default function Signup() {
+	const navigate = useNavigate();
 	const [fullName, setFullName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
@@ -17,17 +20,44 @@ export default function Signup() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const [showMismatchModal, setShowMismatchModal] = useState(false);
+	const [serverError, setServerError] = useState("");
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const passwordsMismatch =
 		confirmPassword.length > 0 && password !== confirmPassword;
 
-	function handleSubmit(e: FormEvent) {
+	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
+		setServerError("");
+
 		if (password !== confirmPassword) {
 			setShowMismatchModal(true);
 			return;
 		}
-		// submit logic goes here
+
+		setIsSubmitting(true);
+		try {
+			const res = await authService.register({
+				fullName,
+				email,
+				phone,
+				password,
+				role: "farmer",
+			});
+			localStorage.setItem("accessToken", res.data.accessToken);
+			navigate("/dashboard");
+		} catch (err) {
+			const axiosErr = err as AxiosError<{
+				message: string;
+				errorCode: string;
+			}>;
+			setServerError(
+				axiosErr.response?.data?.message ||
+					"Something went wrong. Please try again."
+			);
+		} finally {
+			setIsSubmitting(false);
+		}
 	}
 
 	return (
@@ -76,6 +106,12 @@ export default function Signup() {
 									Join HarvestSafe to store and sell with ease.
 								</p>
 							</div>
+
+							{serverError && (
+								<p className="text-danger text-sm text-center mb-4">
+									{serverError}
+								</p>
+							)}
 
 							<div className="flex flex-col gap-4">
 								<Field
@@ -140,8 +176,8 @@ export default function Signup() {
 								<SocialButton icon={<FaApple size={20} />} />
 							</div>
 
-							<Button type="submit" className="w-full">
-								Sign Up
+							<Button type="submit" className="w-full" disabled={isSubmitting}>
+								{isSubmitting ? "Creating account..." : "Sign Up"}
 							</Button>
 						</form>
 					</main>

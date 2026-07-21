@@ -5,12 +5,18 @@ interface IncorrectCredentialsModalProps {
 	isOpen: boolean;
 	onClose: () => void;
 	onResetPassword: () => void;
+	title?: string;
+	message?: string;
+	hideResetOption?: boolean;
 }
 
 export default function IncorrectCredentialsModal({
 	isOpen,
 	onClose,
 	onResetPassword,
+	title = "Password Incorrect",
+	message = "The password you entered is incorrect. Please try again or reset password.",
+	hideResetOption = false,
 }: IncorrectCredentialsModalProps) {
 	if (!isOpen) return null;
 
@@ -19,7 +25,7 @@ export default function IncorrectCredentialsModal({
 			<div className="w-full max-w-100 bg-white rounded-xl">
 				<div className="flex justify-between items-center p-6">
 					<h2 className="font-heading font-bold text-xl text-text-primary">
-						Password Incorrect
+						{title}
 					</h2>
 					<button onClick={onClose} aria-label="Close">
 						<X size={20} className="text-text-secondary" />
@@ -30,26 +36,25 @@ export default function IncorrectCredentialsModal({
 					<div className="w-20 h-20 rounded-full bg-danger-light flex items-center justify-center">
 						<X size={40} className="text-danger" />
 					</div>
-					<p className="text-center text-sm text-text-secondary">
-						The password you entered is incorrect. Please try again or reset
-						password.
-					</p>
+					<p className="text-center text-sm text-text-secondary">{message}</p>
 				</div>
 
 				<div className="flex gap-3 px-6 pb-6">
-					<Button
-						variant="outline"
-						size="medium"
-						onClick={onResetPassword}
-						className="flex-1">
-						Reset Password
-					</Button>
+					{!hideResetOption && (
+						<Button
+							variant="outline"
+							size="medium"
+							onClick={onResetPassword}
+							className="flex-1">
+							Reset Password
+						</Button>
+					)}
 					<Button
 						variant="primary"
 						size="medium"
 						onClick={onClose}
-						className="flex-1">
-						Try Again
+						className={hideResetOption ? "w-full" : "flex-1"}>
+						{hideResetOption ? "Okay" : "Try Again"}
 					</Button>
 				</div>
 			</div>

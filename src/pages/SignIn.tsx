@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaApple } from "react-icons/fa";
 import { Icon } from "@iconify/react";
 import { Eye, EyeOff } from "lucide-react";
+import { authService } from "../api/authService";
+import type { AxiosError } from "axios";
 import logo from "../assets/logo.svg";
 import leaf from "../assets/Leaf-sign-in.png";
 import Button from "../components/Button";
@@ -15,20 +17,44 @@ export default function SignIn() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
 	const [showModal, setShowModal] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [isLocked, setIsLocked] = useState(false);
+	const [modalMessage, setModalMessage] = useState("");
 
-	function handleSubmit(e: FormEvent) {
+	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
-		// replace with real auth call once backend endpoint is ready
-		const isValid = email.length > 0 && password.length >= 8;
-
-		if (!isValid) {
-			setPasswordError(true);
-			setShowModal(true);
-			return;
-		}
-
 		setPasswordError(false);
-		navigate("/dashboard");
+		setIsSubmitting(true);
+
+		try {
+			const res = await authService.login({ email, password });
+			localStorage.setItem("accessToken", res.data.accessToken);
+			navigate("/dashboard");
+		} catch (err) {
+			const axiosErr = err as AxiosError<{
+				message: string;
+				errorCode: string;
+			}>;
+			const errorCode = axiosErr.response?.data?.errorCode;
+
+			if (errorCode === "ACCOUNT_LOCKED") {
+				setIsLocked(true);
+				setModalMessage(
+					axiosErr.response?.data?.message ||
+						"Your account is temporarily locked due to repeated failed attempts. Please try again later."
+				);
+			} else {
+				setIsLocked(false);
+				setPasswordError(true);
+				setModalMessage(
+					"The password you entered is incorrect. Please try again or reset password."
+				);
+			}
+
+			setShowModal(true);
+		} finally {
+			setIsSubmitting(false);
+		}
 	}
 
 	function handleTryAgain() {
@@ -70,7 +96,7 @@ export default function SignIn() {
 					<header className="flex items-center justify-between px-5 py-5">
 						<img src={logo} alt="HarvestSafe" className="w-8 h-8" />
 						<p className="font-body text-sm text-text-secondary">
-							Don't have an account?
+							Don't have an account?{" "}
 							<Link to="/signup" className="text-brand-primary font-semibold">
 								Sign Up
 							</Link>
@@ -89,6 +115,7 @@ export default function SignIn() {
 									Please enter your details to sign in your account
 								</p>
 							</div>
+
 							<div className="flex flex-col gap-3 w-full mb-5">
 								<SocialButton
 									icon={
@@ -102,7 +129,7 @@ export default function SignIn() {
 								/>
 							</div>
 
-							<div className="flex items-center gap-3 mb-4">
+							<div className="flex items-center gap-3 mb-4 w-full">
 								<div className="flex-1 h-px bg-border-light" />
 								<span className="text-text-secondary text-sm whitespace-nowrap">
 									Or sign in with
@@ -110,7 +137,7 @@ export default function SignIn() {
 								<div className="flex-1 h-px bg-border-light" />
 							</div>
 
-							<div className="flex flex-col gap-5 mb-6">
+							<div className="flex flex-col gap-5 mb-6 w-full">
 								<div>
 									<label className="font-body font-semibold text-sm text-text-primary">
 										Email Address
@@ -137,7 +164,7 @@ export default function SignIn() {
 												setPasswordError(false);
 											}}
 											placeholder="Minimum 8 characters"
-											className={`w-full h-11 border mb-6 rounded-lg px-4 pr-12 text-sm outline-none focus:ring-2 focus:ring-brand-primary ${
+											className={`w-full h-11 border rounded-lg px-4 pr-12 text-sm outline-none focus:ring-2 focus:ring-brand-primary ${
 												passwordError
 													? "border-danger"
 													: "border-border-default"
@@ -158,8 +185,11 @@ export default function SignIn() {
 								</div>
 							</div>
 
-							<Button type="submit" className="w-full mb-5">
-								Sign In
+							<Button
+								type="submit"
+								className="w-full mb-5"
+								disabled={isSubmitting}>
+								{isSubmitting ? "Signing in..." : "Sign In"}
 							</Button>
 
 							<p className="text-center">
@@ -186,6 +216,9 @@ export default function SignIn() {
 				isOpen={showModal}
 				onClose={handleTryAgain}
 				onResetPassword={handleResetPassword}
+				title={isLocked ? "Account Locked" : "Password Incorrect"}
+				message={modalMessage}
+				hideResetOption={isLocked}
 			/>
 		</div>
 	);
