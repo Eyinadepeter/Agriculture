@@ -8,6 +8,7 @@ import Stats from '../components/Stats.jsx'
 import Services from '../components/Services.jsx'
 import WhyChooseUs from '../components/WhyChooseUs.jsx'
 import HowItWorks from '../components/HowWork/HowWork.jsx'
+import HomeHeader from '../components/HomeHeader.jsx'
 
 
 const helpCards = [
@@ -27,6 +28,7 @@ const steps = [
 export default function Home() {
   return (
     <>
+    <HomeHeader />
       <Hero/>
       <QuickFeatures/>
      <HarvestProtection/>
