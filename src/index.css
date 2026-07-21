@@ -1,4 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap");
+
 @import "tailwindcss";
+:root {
+  --green-950: #0e2a1c;
+  --green-900: #123421;
+  --green-800: #17422a;
+  --green-700: #1c5233;
+  --green-600: #2f6b44;
+  --green-500: #4a9459;
+  --green-400: #6fcf6f;
+  --green-300: #9fe6a0;
+  --green-100: #e9f5ea;
+  --cream: #fdfdfb;
+  --ink: #14251c;
+  --gray-600: #5c6b62;
+  --gray-400: #8a978e;
+  --gray-100: #f3f6f2;
+  --coral: #e4572e;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+   --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --max-width: 1240px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 
 @theme {
 	/* Fonts */
@@ -81,35 +111,8 @@
 	--color-brand-secondary-light: var(--color-secondary-200);
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap");
 
-:root {
-  --green-950: #0e2a1c;
-  --green-900: #123421;
-  --green-800: #17422a;
-  --green-700: #1c5233;
-  --green-600: #2f6b44;
-  --green-500: #4a9459;
-  --green-400: #6fcf6f;
-  --green-300: #9fe6a0;
-  --green-100: #e9f5ea;
-  --cream: #fdfdfb;
-  --ink: #14251c;
-  --gray-600: #5c6b62;
-  --gray-400: #8a978e;
-  --gray-100: #f3f6f2;
-  --coral: #e4572e;
-  --radius-lg: 22px;
-  --radius-md: 14px;
-  --radius-sm: 8px;
-   --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --max-width: 1240px;
-}
 
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
