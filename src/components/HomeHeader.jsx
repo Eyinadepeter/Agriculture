@@ -28,13 +28,25 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="header-actions">
-          <button className="btn btn-ghost">Sign In</button>
-          <button className="btn btn-primary">Get Started</button>
-          <button className="nav-toggle" aria-label="Toggle menu" onClick={() => setOpen((o) => !o)}>
-            <span /><span /><span />
-          </button>
-        </div>
+       <div className="header-actions">
+  <NavLink to="/Signin" className="btn btn-ghost">
+    Sign In
+  </NavLink>
+
+  <NavLink to="/Signup" className="btn btn-primary">
+    Get Started
+  </NavLink>
+
+  <button
+    className="nav-toggle"
+    aria-label="Toggle menu"
+    onClick={() => setOpen((o) => !o)}
+  >
+    <span />
+    <span />
+    <span />
+  </button>
+</div>
       </div>
 
       {open && (
