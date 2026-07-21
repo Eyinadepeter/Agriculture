@@ -1,5 +1,7 @@
 import CtaBanner from '../components/CtaBanner/CtaBanner.jsx'
+import Header from '../components/Header.js'
 import Testimonials from '../components/Testimonials.jsx'
+import Footer from '../components/Footer.js'
 
 const problems = [
   'Produce spoiling before it reaches the market',
@@ -22,6 +24,7 @@ const whyBullets = ['Reduce Post-Harvest Loss', 'Access Better Storage', 'Reach 
 export default function ForFarmers() {
   return (
     <>
+    <Header  />
       <section className="hero-inner">
         <div className="wrap">
           <div className="hero-inner-copy">
