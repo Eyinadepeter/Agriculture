@@ -1,7 +1,8 @@
 import CtaBanner from '../components/CtaBanner/CtaBanner.jsx'
 import Header from '../components/Header.js'
 import Testimonials from '../components/Testimonials.jsx'
-import Footer from '../components/Footer.js'
+import manholding from '../assets/manholding.png'
+import problem from "../assets/problem.png";
 
 const problems = [
   'Produce spoiling before it reaches the market',
@@ -26,37 +27,97 @@ export default function ForFarmers() {
     <>
     <Header  />
       <section className="hero-inner">
-        <div className="wrap">
-          <div className="hero-inner-copy">
-            <p className="eyebrow eyebrow-pill"><span className="leaf">🌱</span> Built for every harvests</p>
-            <h1>Protect What You Grow. Grow What <em>Matters</em>.</h1>
-            <p>HavestSafe helps farmers protect their produce, reduce post-harvest waste, connect with trusted buyers, and get more value from every harvest.</p>
-            <button className="btn btn-primary">Get Started</button>
-          </div>
-          <div className="hero-inner-media">
-            <img src="https://images.unsplash.com/photo-1595855709940-13c1c86e5b0f?w=800&q=70" alt="Farmer holding a basket of vegetables" />
-          </div>
-        </div>
-      </section>
+  <div className="wrap">
+    <div className="hero-inner-copy">
+      <p className="eyebrow eyebrow-pill">
+        <span className="leaf">🌱</span> Built for every harvest
+      </p>
+
+      <h1>
+        Protect What You Grow. Grow What <em>Matters</em>.
+      </h1>
+
+      <p>
+        HarvestSafe helps farmers protect their produce, reduce
+        post-harvest waste, connect with trusted buyers, and get more
+        value from every harvest.
+      </p>
+
+      <button className="btn btn-primary">
+        Get Started
+      </button>
+    </div>
+
+    <div className="hero-inner-media">
+      <img
+        src={manholding}
+        alt="Farmer holding a basket of vegetables"
+      />
+    </div>
+  </div>
+</section>
 
       {/* The Problem */}
-      <section className="section">
-        <div className="wrap split reverse">
-          <div className="split-media">
-            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=800&q=70" alt="Farmer sorting rotten tomatoes" />
-          </div>
-          <div className="split-copy">
-            <p className="eyebrow eyebrow-plain"><span className="leaf">🌱</span> The Problem</p>
-            <h2>Your Harvest Deserves More Time</h2>
-            <p>Farmers work hard to grow and harvest their produce, but the journey from farm to market is not always easy. Without the right storage, market access, and support, valuable produce can be lost before it reaches the people who need it.</p>
-            <ul className="cross-list">
-              {problems.map((p) => (
-                <li key={p}><span className="mark">✕</span><span>{p}</span></li>
-              ))}
-            </ul>
-          </div>
+      <section className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+      {/* Image */}
+      <div className="relative">
+        <img
+          src={problem}
+          alt="Farmer sorting tomatoes"
+          className="w-full h-[420px] object-cover rounded-3xl"
+        />
+
+        {/* Small floating image (optional) */}
+        <div className="absolute -bottom-5 right-6 w-20 h-20 rounded-full border-4 border-white overflow-hidden shadow-lg">
+          <img
+            src={problem}
+            alt="Farmer"
+            className="w-full h-full object-cover"
+          />
         </div>
-      </section>
+      </div>
+
+      {/* Content */}
+      <div>
+
+        <p className="text-[#67B246] text-sm font-medium mb-4">
+          🌱 The Problem
+        </p>
+
+        <h2 className="text-4xl font-bold text-[#1F5130] leading-tight mb-6">
+          Your Harvest Deserves <br /> More Time
+        </h2>
+
+        <p className="text-gray-500 leading-8 mb-8">
+          Farmers work hard to grow and harvest their produce, but the
+          journey from farm to market is not always easy. Without the
+          right storage, market access, and support, valuable produce
+          can be lost before it reaches the people who need it.
+        </p>
+
+        <ul className="space-y-5">
+          {problems.map((problem) => (
+            <li
+              key={problem}
+              className="flex items-start gap-3 text-gray-600"
+            >
+              <span className="text-red-500 text-xl font-bold">✕</span>
+
+              <span>{problem}</span>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* The Solution */}
       <section className="section section-tint">
