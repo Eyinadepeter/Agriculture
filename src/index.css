@@ -1,111 +1,82 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+@theme {
+	/* Fonts */
+	--font-heading: "Plus Jakarta Sans", sans-serif;
+	--font-body: "Inter", sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	/* Black & White */
+	--color-black: #3a3a3a;
+	--color-white: #ffffff;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
+	/* Neutrals */
+	--color-neutral-400: #949494;
+	--color-neutral-300: #cacaca;
+	--color-neutral-200: #e5e5e5;
+	--color-neutral-100: #f8f8f8;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+	/* Primary */
+	--color-primary-400: #1e4932;
+	--color-primary-300: #2f7d32;
+	--color-primary-200: #8bc58d;
+	--color-primary-100: #d8f1d7;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+	/* Secondary */
+	--color-secondary-300: #66bb6a;
+	--color-secondary-200: #a8e6a8;
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+	/* Info */
+	--color-info-200: #1565c0;
+	--color-info-100: #e3f2fd;
 
-body {
-  margin: 0;
-}
+	/* Purple */
+	--color-purple-200: #7e57c2;
+	--color-purple-100: #dad3ef;
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+	/* Orange */
+	--color-orange-200: #ff851a;
+	--color-orange-100: #fbe3d0;
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
+	/* Warning */
+	--color-warning-300: #f4b400;
+	--color-warning-200: #f7d573;
+	--color-warning-100: #fdf1d0;
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+	/* Danger */
+	--color-danger-300: #e53935;
+	--color-danger-200: #f8bcb9;
+	--color-danger-100: #f3e2e2;
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+	/* Text */
+	--color-text-primary: var(--color-black);
+	--color-text-secondary: var(--color-neutral-400);
+	--color-text-muted: var(--color-neutral-300);
+	--color-text-inverse: var(--color-white);
+
+	/* Background */
+	--color-bg-primary: var(--color-white);
+	--color-bg-secondary: var(--color-neutral-100);
+	--color-bg-tertiary: var(--color-neutral-200);
+
+	/* Border */
+	--color-border-light: var(--color-neutral-200);
+	--color-border-default: var(--color-neutral-300);
+	--color-border-dark: var(--color-neutral-400);
+
+	/* Status */
+	--color-success: var(--color-primary-300);
+	--color-success-light: var(--color-primary-100);
+	--color-info: var(--color-info-200);
+	--color-info-light: var(--color-info-100);
+	--color-warning: var(--color-warning-300);
+	--color-warning-light: var(--color-warning-100);
+	--color-danger: var(--color-danger-300);
+	--color-danger-light: var(--color-danger-100);
+
+	/* Brand */
+	--color-brand-primary: var(--color-primary-300);
+	--color-brand-primary-dark: var(--color-primary-400);
+	--color-brand-primary-light: var(--color-primary-200);
+	--color-brand-secondary: var(--color-secondary-300);
+	--color-brand-secondary-light: var(--color-secondary-200);
 }
