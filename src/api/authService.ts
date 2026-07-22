@@ -35,7 +35,7 @@ export const authService = {
 		const { data } = await client.post("/auth/logout");
 		return data;
 	},
-
+  
 	async refreshToken() {
 		const { data } = await client.post("/auth/refresh-token");
 		return data;
