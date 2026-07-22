@@ -16,8 +16,8 @@ export default function SignIn() {
 	const [passwordError, setPasswordError] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [isLocked, setIsLocked] = useState(false);
-	const [modalMessage, setModalMessage] = useState("");
+	const [isLocked] = useState(false);
+	const [modalMessage] = useState("");
 
 	async function handleSubmit(e: FormEvent) {
   e.preventDefault();
