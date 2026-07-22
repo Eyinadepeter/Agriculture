@@ -22,22 +22,80 @@ export interface AuthErrorResponse {
 
 export const authService = {
 	async register(payload: RegisterPayload) {
-		const { data } = await client.post("/auth/register", payload);
-		return data;
+		const BYPASS = import.meta.env.VITE_AUTH_BYPASS === "true";
+		if (BYPASS) {
+			const mockRes: any = {
+				data: {
+					accessToken: "dev-access-token",
+					user: {
+						fullName: payload.fullName,
+						email: payload.email,
+						phone: payload.phone,
+						role: payload.role,
+					},
+				},
+				status: 200,
+				statusText: "OK",
+			};
+			return Promise.resolve(mockRes);
+		}
+
+		const res = await client.post("/auth/register", payload);
+		return res;
 	},
 
 	async login(payload: LoginPayload) {
-		const { data } = await client.post("/auth/login", payload);
-		return data;
+		const BYPASS = import.meta.env.VITE_AUTH_BYPASS === "true";
+		if (BYPASS) {
+			const mockRes: any = {
+				data: {
+					accessToken: "dev-access-token",
+					user: {
+						email: payload.email,
+						fullName: "Dev User",
+						role: "farmer",
+					},
+				},
+				status: 200,
+				statusText: "OK",
+			};
+			return Promise.resolve(mockRes);
+		}
+
+		const res = await client.post("/auth/login", payload);
+		return res;
 	},
 
 	async logout() {
-		const { data } = await client.post("/auth/logout");
-		return data;
+		const BYPASS = import.meta.env.VITE_AUTH_BYPASS === "true";
+		if (BYPASS) {
+			try {
+				localStorage.removeItem("accessToken");
+			} catch (e) {
+				/* ignore */
+			}
+			const mockRes: any = { data: { success: true }, status: 200, statusText: "OK" };
+			return Promise.resolve(mockRes);
+		}
+
+		const res = await client.post("/auth/logout");
+		return res;
 	},
   
 	async refreshToken() {
-		const { data } = await client.post("/auth/refresh-token");
-		return data;
+		const BYPASS = import.meta.env.VITE_AUTH_BYPASS === "true";
+		if (BYPASS) {
+			const mockRes: any = {
+				data: {
+					accessToken: "dev-access-token",
+				},
+				status: 200,
+				statusText: "OK",
+			};
+			return Promise.resolve(mockRes);
+		}
+
+		const res = await client.post("/auth/refresh-token");
+		return res;
 	},
 };
