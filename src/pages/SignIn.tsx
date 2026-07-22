@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { Eye, EyeOff } from "lucide-react";
 import { authService } from "../api/authService";
 import type { AxiosError } from "axios";
-import logo from "../assets/logo.svg";
+import logo from "../assets/Logo.svg";
 import leaf from "../assets/Leaf-sign-in.png";
 import Button from "../components/Button";
 import IncorrectCredentialsModal from "../components/IncorrectCredentialsModal";

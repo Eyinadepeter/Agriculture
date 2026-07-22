@@ -5,8 +5,8 @@ import type { AxiosError } from "axios";
 import { FaFacebookF, FaApple } from "react-icons/fa";
 import { Icon } from "@iconify/react";
 import { Eye, EyeOff } from "lucide-react";
-import logo from "../assets/logo.svg";
-import leaf from "../assets/Leaf.png";
+import logo from "../assets/Logo.svg";
+import leaf from "../assets/leaf.png";
 import Button from "../components/Button";
 import PasswordMismatchModal from "../components/PasswordMismatchModal";
 

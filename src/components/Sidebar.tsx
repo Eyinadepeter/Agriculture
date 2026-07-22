@@ -11,7 +11,7 @@ import {
 	User,
 	LogOut,
 } from "lucide-react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/Logo.svg";
 
 const NAV_ITEMS = [
 	{ label: "Home", path: "/dashboard", icon: Home },

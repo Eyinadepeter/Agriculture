@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/Logo.svg";
 
 interface NavItem {
 	to: string;
