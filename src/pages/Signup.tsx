@@ -1,7 +1,5 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { authService } from "../api/authService";
-import type { AxiosError } from "axios";
 import { FaFacebookF, FaApple } from "react-icons/fa";
 import { Icon } from "@iconify/react";
 import { Eye, EyeOff } from "lucide-react";
@@ -27,36 +25,22 @@ export default function Signup() {
 		confirmPassword.length > 0 && password !== confirmPassword;
 
 	async function handleSubmit(e: FormEvent) {
-		e.preventDefault();
-		setServerError("");
+  e.preventDefault();
+  setServerError("");
 
-		if (password !== confirmPassword) {
-			setShowMismatchModal(true);
-			return;
-		}
+  if (password !== confirmPassword) {
+    setShowMismatchModal(true);
+    return;
+  }
 
-		setIsSubmitting(true);
-		try {
-			const res = await authService.register({
-				fullName,
-				email,
-				phone,
-				password,
-				role: "farmer",
-			});
-			localStorage.setItem("accessToken", res.data.accessToken);
-			navigate("/dashboard");
-		} catch (err) {
-			const axiosErr = err as AxiosError<any>;
-			const respData = axiosErr.response?.data;
-			console.error("Signup error:", axiosErr);
-			setServerError(
-				respData?.message || axiosErr.message || (respData ? JSON.stringify(respData) : "Something went wrong. Please try again.")
-			);
-		} finally {
-			setIsSubmitting(false);
-		}
-	}
+  setIsSubmitting(true);
+
+  // Simulate a short loading time (optional)
+  setTimeout(() => {
+    setIsSubmitting(false);
+    navigate("/dashboard");
+  }, 1000);
+}
 
 	return (
 		<div className="min-h-screen w-full flex items-center justify-center bg-primary-400 lg:p-10">

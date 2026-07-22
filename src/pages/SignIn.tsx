@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaApple } from "react-icons/fa";
 import { Icon } from "@iconify/react";
 import { Eye, EyeOff } from "lucide-react";
-import { authService } from "../api/authService";
-import type { AxiosError } from "axios";
 import logo from "../assets/Logo.svg";
 import leaf from "../assets/Leaf-sign-in.png";
 import Button from "../components/Button";
@@ -22,41 +20,17 @@ export default function SignIn() {
 	const [modalMessage, setModalMessage] = useState("");
 
 	async function handleSubmit(e: FormEvent) {
-		e.preventDefault();
-		setPasswordError(false);
-		setIsSubmitting(true);
+  e.preventDefault();
 
-		try {
-			const res = await authService.login({ email, password });
-			localStorage.setItem("accessToken", res.data.accessToken);
-			navigate("/dashboard");
-		} catch (err) {
-			const axiosErr = err as AxiosError<any>;
-			const respData = axiosErr.response?.data;
-			console.error("Signin error:", axiosErr);
-			const errorCode = respData?.errorCode;
+  setPasswordError(false);
+  setIsSubmitting(true);
 
-			if (errorCode === "ACCOUNT_LOCKED") {
-				setIsLocked(true);
-				setModalMessage(
-					respData?.message ||
-						"Your account is temporarily locked due to repeated failed attempts. Please try again later."
-				);
-			} else {
-				setIsLocked(false);
-				setPasswordError(true);
-				setModalMessage(
-					respData?.message ||
-						"The password you entered is incorrect. Please try again or reset password."
-				);
-			}
-
-			setShowModal(true);
-		} finally {
-			setIsSubmitting(false);
-		}
-	}
-
+  // Optional loading effect
+  setTimeout(() => {
+    setIsSubmitting(false);
+    navigate("/dashboard");
+  }, 1000);
+}
 	function handleTryAgain() {
 		setShowModal(false);
 		setPassword("");
