@@ -47,13 +47,11 @@ export default function Signup() {
 			localStorage.setItem("accessToken", res.data.accessToken);
 			navigate("/dashboard");
 		} catch (err) {
-			const axiosErr = err as AxiosError<{
-				message: string;
-				errorCode: string;
-			}>;
+			const axiosErr = err as AxiosError<any>;
+			const respData = axiosErr.response?.data;
+			console.error("Signup error:", axiosErr);
 			setServerError(
-				axiosErr.response?.data?.message ||
-					"Something went wrong. Please try again."
+				respData?.message || axiosErr.message || (respData ? JSON.stringify(respData) : "Something went wrong. Please try again.")
 			);
 		} finally {
 			setIsSubmitting(false);

@@ -31,23 +31,23 @@ export default function SignIn() {
 			localStorage.setItem("accessToken", res.data.accessToken);
 			navigate("/dashboard");
 		} catch (err) {
-			const axiosErr = err as AxiosError<{
-				message: string;
-				errorCode: string;
-			}>;
-			const errorCode = axiosErr.response?.data?.errorCode;
+			const axiosErr = err as AxiosError<any>;
+			const respData = axiosErr.response?.data;
+			console.error("Signin error:", axiosErr);
+			const errorCode = respData?.errorCode;
 
 			if (errorCode === "ACCOUNT_LOCKED") {
 				setIsLocked(true);
 				setModalMessage(
-					axiosErr.response?.data?.message ||
+					respData?.message ||
 						"Your account is temporarily locked due to repeated failed attempts. Please try again later."
 				);
 			} else {
 				setIsLocked(false);
 				setPasswordError(true);
 				setModalMessage(
-					"The password you entered is incorrect. Please try again or reset password."
+					respData?.message ||
+						"The password you entered is incorrect. Please try again or reset password."
 				);
 			}
 
