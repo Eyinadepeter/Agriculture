@@ -1,4 +1,5 @@
 import CtaBanner from "../components/CtaBanner/CtaBanner.jsx";
+import Header from "../components/Header.js";
 
 const overviewCards = [
 	{
@@ -59,6 +60,7 @@ const previews = [
 export default function AboutUs() {
 	return (
 		<>
+		<Header/>
 			<section className="hero-inner">
 				<div className="wrap">
 					<div className="hero-inner-copy">

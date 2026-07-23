@@ -27,7 +27,7 @@ export default function Services() {
     />
 
     <img
-      src={farming}
+      src={truck}
       alt=""
       className="w-[250px] h-[180px] rounded-2xl object-cover shadow-xl"
     />
@@ -35,30 +35,52 @@ export default function Services() {
 </div>
 
         {/* Right */}
-        <div className="right-content">
+        <div className="flex flex-col gap-8">
 
-          <div className="heading">
-            <span>🌱 Our Services</span>
-            <h2>
-              Everything Your
-              <br />
-              Harvest Needs
-            </h2>
-          </div>
+  {/* Heading */}
+ <div className="flex flex-col gap-8">
+  {/* Heading */}
+  <div>
+    <span className="inline-flex items-center gap-2 text-green-500 text-lg font-medium">
+      🌱 Our Services
+    </span>
 
-          <div className="gallery">
-            
-            <div className="col col-2">
-              <img src={buyers} alt="" />
-              <img src={tomatoes} alt="" />
-            </div>
-            <div className="col col-3">
-              <img src={truck} alt="" />
-              <img src={harvest} alt="" />
-            </div>
-          </div>
+    <h2 className="mt-3 text-4xl lg:text-5xl font-bold text-primary-500 leading-tight">
+      Everything Your
+      <br />
+      Harvest Needs
+    </h2>
+  </div>
 
-        </div>
+  {/* Gallery */}
+  <div className="grid grid-cols-2 gap-5 items-start">
+    {/* Left Column */}
+    <div className="flex flex-col gap-5">
+      <img
+        src={buyers}
+        alt="Buyers"
+        className="w-full h-48 rounded-3xl object-cover"
+      />
+
+      <img
+        src={tomatoes}
+        alt="Tomatoes"
+        className="w-full h-48 rounded-3xl object-cover"
+      />
+    </div>
+
+    {/* Right Column */}
+    <div>
+      <img
+        src={truck}
+        alt="Truck"
+        className="w-full h-48 rounded-3xl object-cover"
+      />
+    </div>
+  </div>
+</div>
+
+</div>
 
       </div>
     </section>

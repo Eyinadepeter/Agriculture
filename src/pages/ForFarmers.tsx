@@ -51,7 +51,7 @@ export default function ForFarmers() {
     <Header  />
       <section className="hero-inner">
   <div className="wrap">
-    <div className="hero-inner-copy">
+    <div className="hero-inner-copy w-full">
       <p className="eyebrow eyebrow-pill">
         <span className="leaf">🌱</span> Built for every harvest
       </p>
