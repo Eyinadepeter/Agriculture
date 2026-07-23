@@ -1,4 +1,4 @@
-import farmer from "../assets/farmer.jpg";
+import womanbasket from "../assets/womanbasket.png";
 import warehouse from "../assets/warehouse.jpg";
 import buyers from "../assets/buyers.jpg";
 import truck from "../assets/truck.jpg";
@@ -12,9 +12,27 @@ export default function Services() {
       <div className="services-wrapper">
 
         {/* Left Large Image */}
-        <div className="left-image">
-          <img src={farmer} alt="" />
-        </div>
+        <div className="relative w-fit">
+  <img
+    src={womanbasket}
+    alt=""
+    className="w-[650px] rounded-3xl object-cover"
+  />
+
+  <div className="absolute right-0 top-1/2 -translate-y-[15%] flex flex-col gap-5">
+    <img
+      src={warehouse}
+      alt=""
+      className="w-[250px] h-[180px] rounded-2xl object-cover shadow-xl"
+    />
+
+    <img
+      src={farming}
+      alt=""
+      className="w-[250px] h-[180px] rounded-2xl object-cover shadow-xl"
+    />
+  </div>
+</div>
 
         {/* Right */}
         <div className="right-content">
@@ -29,10 +47,7 @@ export default function Services() {
           </div>
 
           <div className="gallery">
-            <div className="col col-1">
-              <img src={warehouse} alt="" />
-              <img src={farming} alt="" />
-            </div>
+            
             <div className="col col-2">
               <img src={buyers} alt="" />
               <img src={tomatoes} alt="" />
