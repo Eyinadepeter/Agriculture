@@ -2,9 +2,7 @@ import womanbasket from "../assets/womanbasket.png";
 import warehouse from "../assets/warehouse.jpg";
 import buyers from "../assets/buyers.jpg";
 import truck from "../assets/truck.jpg";
-import harvest from "../assets/harvest.jpg";
 import tomatoes from "../assets/tomatoes.jpg";
-import farming from "../assets/farming.jpg";
 
 export default function Services() {
   return (
