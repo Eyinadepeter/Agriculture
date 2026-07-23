@@ -1,5 +1,6 @@
 import CtaBanner from '../components/CtaBanner/CtaBanner.jsx'
 import Testimonials from '../components/Testimonials.jsx'
+import Headers from '../components/Header.jsx'
 
 const problems = [
   'Difficulty finding available produce',
@@ -28,6 +29,7 @@ const buyerTestimonials = [
 export default function ForBuyers() {
   return (
     <>
+    <Headers/>
       <section className="hero-inner">
         <div className="wrap">
           <div className="hero-inner-copy">

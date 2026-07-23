@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
-import { FiHome, FiShoppingBag, FiFeather } from "react-icons/fi";
+import Vector from "../assets/Frame.png";
+import FiShoppingBag from "../assets/Frame2.png";
+import FiFeather from "../assets/Frame3.png";
 
 interface QuickFeature {
 	icon: ReactNode;
@@ -9,20 +11,38 @@ interface QuickFeature {
 
 const quickFeatures: QuickFeature[] = [
 	{
-		icon: <FiHome />,
-		title: "Safe Storage",
-		body: "Keep your produce fresh for longer.",
-	},
+  icon: (
+    <img
+      src={Vector}
+      alt="Safe Storage"
+      className="feature-icon"
+    />
+  ),
+  title: "Safe Storage",
+  body: "Keep your produce fresh for longer.",
+},
+{
+  icon: (
+    <img
+      src={FiShoppingBag}
+      alt="Market Access"
+      className="feature-icon"
+    />
+  ),
+  title: "Market Access",
+  body: "Connect with trusted buyers and sell your harvest with ease.",
+},
 	{
-		icon: <FiShoppingBag />,
-		title: "Market Access",
-		body: "Connect with trusted buyers and sell your harvest with ease.",
-	},
-	{
-		icon: <FiFeather />,
-		title: "Harvest Management",
-		body: "Track and manage your produce with ease.",
-	},
+  icon: (
+    <img
+      src={FiFeather}
+      alt="Harvest Management"
+      className="feature-icon"
+    />
+  ),
+  title: "Harvest Management",
+  body: "Track and manage your produce with ease.",
+},
 ];
 
 export default function QuickFeatures() {

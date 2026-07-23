@@ -1,6 +1,9 @@
 import harvestImage from "../assets/harvest.png";
-import { FiHome, FiRefreshCw, FiUsers, FiTruck } from "react-icons/fi";
 import type { ReactNode } from "react";
+import vector from "../assets/Vector.png";
+import framero from "../assets/framero.png";
+import reachBuyers from "../assets/ReachBuyers.png";
+import moveHarvest from "../assets/Moveharvest.png";
 
 interface HelpCard {
 	icon: ReactNode;
@@ -11,25 +14,49 @@ interface HelpCard {
 
 const helpCards: HelpCard[] = [
 	{
-		icon: <FiHome />,
+		icon: (
+    <img
+      src={vector}
+      alt="Safe Storage"
+      className="feature-icon"
+    />
+  ),
 		title: "Store with Confidence",
 		body: "Access safer storage options to help keep your produce fresh for longer.",
 		dark: false,
 	},
 	{
-		icon: <FiRefreshCw />,
+		icon: (
+    <img
+      src={framero}
+      alt="Safe Storage"
+      className="feature-icon"
+    />
+  ),
 		title: "Reduce Food Waste",
 		body: "Protect your harvest from spoilage and reduce wasteful post-harvest losses.",
 		dark: true,
 	},
 	{
-		icon: <FiUsers />,
+		icon: (
+    <img
+      src={reachBuyers}
+      alt="Reach More Buyers"
+      className="feature-icon"
+    />
+  ),
 		title: "Reach More Buyers",
 		body: "Connect with buyers and discover better opportunities to sell your produce.",
 		dark: true,
 	},
 	{
-		icon: <FiTruck />,
+		icon: (
+    <img
+      src={moveHarvest}
+      alt="Move Your Harvest"
+      className="feature-icon"
+    />
+  ),
 		title: "Move Your Harvest",
 		body: "Get the support you need to move your produce from the farm to the market.",
 		dark: false,
